@@ -14,7 +14,7 @@ Load as step 1 of the ODD Close Sequence, or when the user invokes `/deslop`.
 
 ## Hard Rules
 
-- Scope is the diff against the base branch (default `main`) plus the working tree, unless the user names paths.
+- Scope is the diff against `<base>` plus the working tree, unless the user names paths. Resolve `<base>` with `git merge-base HEAD origin/HEAD`; if unavailable, fall back to local `main` or `master`, or the working tree diff (`git diff` plus new change files).
 - Behavior stays identical. Removing slop never drops real validation.
 - Keep error handling at system boundaries: I/O, network, parsing, user input, process exit codes. Delete a guard only when a type or an upstream boundary already guarantees the invariant.
 - Run `no-comments` exactly once per pass, from here. Callers never run it separately.
@@ -34,7 +34,7 @@ Load as step 1 of the ODD Close Sequence, or when the user invokes `/deslop`.
 
 ## Execution Steps
 
-1. Lock the file list from `git diff <base>...HEAD` and `git diff`.
+1. Resolve `<base>` (`git merge-base HEAD origin/HEAD`, fallback local `main`/`master`, else working tree only) and lock the changed file list.
 2. Remove each slop pattern at its root without widening scope.
 3. Run `no-comments` once over the same file list.
 4. Run `unslop` on edited docs and PR text.

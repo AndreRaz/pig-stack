@@ -19,8 +19,8 @@
     "token-efficiency"
   ],
   "suggestedPrompts": [
-    "Use /pig-mode to fix this bug: reproduce first, trace the root cause, verify on the real surface.",
-    "Run /deslop and /no-comments on the current branch before final verification.",
+    "Use /pig-mode to fix this bug: reproduce first, trace the root cause, verify on the real app.",
+    "Run /deslop on the current branch before final verification.",
     "Run /setup-pig-stack to configure a balanced $20-tier model budget for this workspace."
   ]
 }

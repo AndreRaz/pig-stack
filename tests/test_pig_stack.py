@@ -39,6 +39,69 @@ class PigStackVerificationTests(unittest.TestCase):
             self.assertTrue(any("broken link target" in e for e in errors))
             self.assertTrue(any("banned comment line" in e for e in errors))
 
+    def test_validator_rejects_token_cap_collision_and_bad_routes(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_root = Path(tmp) / "pig-stack"
+            install.install_target(ROOT, tmp_root, "copy", dry_run=False)
+
+            swarm_dir = tmp_root / "skills" / "swarm"
+            swarm_dir.mkdir(parents=True)
+            oversized_body = " ".join(["x" * 20] * 220)
+            (swarm_dir / "SKILL.md").write_text(
+                "---\n"
+                "name: swarm\n"
+                'description: "Trigger: swarm. Colliding oversized skill."\n'
+                "license: MIT\n"
+                "metadata:\n"
+                "  author: pig-stack\n"
+                "---\n\n"
+                "## Activation Contract\n\nLoad.\n\n"
+                "## Hard Rules\n\n"
+                f"{oversized_body}\n\n"
+                "## Decision Gates\n\n| A | B |\n|---|---|\n| 1 | 2 |\n\n"
+                "## Execution Steps\n\n1. Run `/missing-skill`.\n\n"
+                "## Output Contract\n\nReturn ok.\n",
+                encoding="utf-8",
+            )
+
+            pig_mode_md = tmp_root / "skills" / "pig-mode" / "SKILL.md"
+            pig_mode_md.write_text(
+                pig_mode_md.read_text(encoding="utf-8") + "\nRun `arena` immediately.\n",
+                encoding="utf-8",
+            )
+
+            errors = validate_pig_stack.validate(tmp_root)
+            self.assertTrue(any("collides with a built-in runtime skill" in e for e in errors))
+            self.assertTrue(any("1000-token cap" in e for e in errors))
+            self.assertTrue(any("unknown skill reference '/missing-skill'" in e for e in errors))
+            self.assertTrue(any("auto-route to model-disabled skill 'arena'" in e for e in errors))
+
+    def test_validator_comment_tokenizer_registry_and_dashes(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_root = Path(tmp) / "pig-stack"
+            install.install_target(ROOT, tmp_root, "copy", dry_run=False)
+
+            inline_py = tmp_root / "scripts" / "inline_bad.py"
+            inline_py.write_text("value = 1  # inline comment\n", encoding="utf-8")
+            str_py = tmp_root / "scripts" / "string_ok.py"
+            str_py.write_text('TEXT = """\n# markdown heading inside string\n"""\n', encoding="utf-8")
+
+            reg_path = tmp_root / ".atl" / "skill-registry.md"
+            reg_path.write_text("# stale registry\n", encoding="utf-8")
+
+            ref_path = tmp_root / "skills" / "pig-mode" / "references" / "principles.md"
+            ref_path.write_text(
+                ref_path.read_text(encoding="utf-8") + "\nUse `pig-swarm` immediately — now.\n",
+                encoding="utf-8",
+            )
+
+            errors = validate_pig_stack.validate(tmp_root)
+            self.assertTrue(any("inline_bad.py:1: banned comment line" in e for e in errors))
+            self.assertFalse(any("string_ok.py" in e for e in errors))
+            self.assertTrue(any(".atl/skill-registry.md is out of date" in e for e in errors))
+            self.assertTrue(any("auto-route to model-disabled skill 'pig-swarm'" in e for e in errors))
+            self.assertTrue(any("banned em/en dash violates unslop" in e for e in errors))
+
     def test_installer_supports_symlink_and_copy_modes(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             fake_home = Path(tmp) / "home"

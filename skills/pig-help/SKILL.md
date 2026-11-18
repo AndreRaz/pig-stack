@@ -26,7 +26,7 @@ Load when the user asks how `pig-stack` works, which skill to use, or how to con
 | Configure $20 budget / role models | `/setup-pig-stack` |
 | Clean AI code + comment slop before PR | `/deslop` (runs `no-comments` once) |
 | Design types/boundaries before coding | `/architect` |
-| Parallel disjoint slices | `/swarm` |
+| Parallel disjoint slices | `/pig-swarm` (opt-in) |
 | Adversarial check / design bakeoff | `/interrogate` or `/arena` (opt-in) |
 | Prove real app behavior end-to-end | `/create-verification-skill` |
 

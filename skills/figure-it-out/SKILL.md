@@ -4,9 +4,8 @@ description: "Trigger: figure-it-out, /figure-it-out, complex migration, custom 
 license: MIT
 metadata:
   author: pig-stack
-  version: "1.1"
+  version: "1.2"
   layer: "4"
-disable-model-invocation: true
 ---
 
 ## Activation Contract
@@ -25,9 +24,9 @@ Load when `pig-mode` finds no matching playbook (large migrations, multi-stage c
 
 | Situation | Action |
 |---|---|
-| Hard-to-reverse design choice | `architect` once. `arena` only if it returns an open prototype question. |
-| Independent seams with ~100+ lines each | `swarm` with disjoint surfaces. |
-| A fix repeats across units | `correct` after the run, not during it. |
+| Hard-to-reverse design choice | `architect` once. Suggest `/arena` (opt-in) only if it returns an open prototype question. |
+| Independent seams with ~100+ lines each | Suggest `/pig-swarm` (opt-in) with disjoint edit paths. |
+| A fix repeats across units | Suggest `/correct` (opt-in) after the run, not during it. |
 
 ## Execution Steps
 

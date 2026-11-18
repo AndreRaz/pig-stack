@@ -16,7 +16,7 @@ Load when initializing `pig-stack` in a workspace, configuring role models, or t
 
 - **Safe $20 default:** Default all roles to `inherit-parent` (`balanced`) so subagents use the active subscription model without burning extra quota on expensive panels.
 - **No invented model slugs:** Only write `inherit-parent`, `auto`, or model identifiers confirmed available in the active runtime.
-- **Idempotent config:** Write `.pig-stack/models.md` in the workspace (or the runtime's user rule path per `docs/harness/multi-runtime.md`) so re-runs overwrite cleanly without duplicating rules.
+- **Idempotent config:** Write `.pig-stack/models.md` in the workspace (or the runtime's user rule path per `docs/runtimes/multi-runtime.md`) so re-runs overwrite cleanly without duplicating rules.
 - **Ask at most one focused step at a time:** Confirm budget tier before writing.
 
 ## Decision Gates
@@ -25,7 +25,7 @@ Load when initializing `pig-stack` in a workspace, configuring role models, or t
 |---|---|---|
 | `balanced` (Recommended, $20 tier) | All roles `inherit-parent`; panels opt-in only | Claude Pro / Codex / Antigravity daily work |
 | `economy` | `pig-explorer` and `comment-sicko` on fastest/lightest tier; workers `inherit-parent` | Long exploration and heavy diffs on tight quota |
-| `multi-model` | Explicit per-role slugs for `worker`, `verifier`, `arena`, `interrogate` | Multi-vendor adversarial checks when budget permits |
+| `multi-model` | Explicit per-role slugs for `worker`, `verifier`, opt-in `arena`, and opt-in `interrogate` | Multi-vendor adversarial checks when budget permits |
 
 ## Execution Steps
 

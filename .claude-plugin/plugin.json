@@ -1,0 +1,11 @@
+{
+  "name": "pig-stack",
+  "version": "0.1.0",
+  "description": "ODD-powered engineering plugin eliminating AI slop, comment bloat, and wasted subagent tokens across runtimes.",
+  "author": {
+    "name": "pig-stack contributors"
+  },
+  "license": "MIT",
+  "skills": "./skills/",
+  "agents": "./agents/"
+}

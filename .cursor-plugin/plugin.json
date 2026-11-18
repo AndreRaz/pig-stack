@@ -1,0 +1,29 @@
+{
+  "name": "pig-stack",
+  "displayName": "pig-stack",
+  "version": "0.1.0",
+  "description": "ODD-powered engineering plugin eliminating AI slop, comment bloat, and wasted subagent tokens across runtimes.",
+  "author": {
+    "name": "pig-stack contributors"
+  },
+  "license": "MIT",
+  "logo": "assets/logo.svg",
+  "keywords": [
+    "pig-stack",
+    "odd",
+    "anti-slop",
+    "no-comments",
+    "verification",
+    "token-efficiency"
+  ],
+  "category": "developer-tools",
+  "tags": [
+    "workflow",
+    "odd",
+    "anti-slop",
+    "verification",
+    "subagents"
+  ],
+  "skills": "./skills/",
+  "agents": "./agents/"
+}

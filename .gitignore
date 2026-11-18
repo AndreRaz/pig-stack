@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.audit/
+decisions.tsv
+.pig-stack/
+
+/.aws/
+/.atl/.skill-registry.cache.json

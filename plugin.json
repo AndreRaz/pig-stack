@@ -1,0 +1,26 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pig-stack",
+  "displayName": "pig-stack",
+  "version": "0.1.0",
+  "description": "ODD-powered engineering plugin eliminating AI slop, comment bloat, and wasted subagent tokens across Antigravity, Cursor, Claude Code, Codex, and OpenCode.",
+  "author": {
+    "name": "pig-stack contributors"
+  },
+  "license": "MIT",
+  "logo": "assets/logo.svg",
+  "keywords": [
+    "pig-stack",
+    "odd",
+    "organic-driven-development",
+    "anti-slop",
+    "no-comments",
+    "verification",
+    "token-efficiency"
+  ],
+  "suggestedPrompts": [
+    "Use /pig-mode to fix this bug: reproduce first, trace the root cause, verify on the real surface.",
+    "Run /deslop and /no-comments on the current branch before final verification.",
+    "Run /setup-pig-stack to configure a balanced $20-tier model budget for this workspace."
+  ]
+}

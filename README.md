@@ -1,6 +1,6 @@
 # pig-stack
 
-<img src="assets/logo.svg" alt="pig-stack mascot" width="48">
+<img src="assets/logo.svg" alt="pig-stack mascot" width="72" style="display: block; margin: 0 auto;">
 
 hi, i'm Andre. i build software with **Kin Labs**, and at **Ubícalo** i work on code for **machine-learning model inference**.
 

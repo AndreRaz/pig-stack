@@ -1,5 +1,7 @@
 # pig-stack
 
+<img src="assets/logo.svg" alt="pig-stack mascot" width="48">
+
 hi, i'm Andre. i build software with **Kin Labs**, and at **Ubícalo** i work on code for **machine-learning model inference**.
 
 they're different kinds of work, but they've taught me the same lesson: code that merely *runs* isn't good enough. i need to understand why it works, what breaks when it doesn't, and how to prove a change is safe. that matters even more when a model is making predictions from real data.

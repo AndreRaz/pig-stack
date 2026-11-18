@@ -1,10 +1,10 @@
 ---
 name: pig-mode
-description: "Trigger: pig-mode, /pig-mode, ODD, rigorous workflow. Runs ODD orchestration with pstack rigor, anti-slop, comment ban, and $20-tier token efficiency."
+description: "Trigger: pig-mode, /pig-mode, ODD, rigorous workflow. Runs ODD orchestration with bounded verification, anti-slop, comment ban, and $20-tier token efficiency."
 license: MIT
 metadata:
   author: pig-stack
-  version: "1.1"
+  version: "1.2"
   layer: "5"
 ---
 
@@ -40,7 +40,7 @@ Load when the user invokes `/pig-mode` or requests rigorous engineering work (fe
 2. Run odd-protocol steps 1-4.
 3. Match one playbook in `playbooks/` (`feature`, `bug-fix`, `refactoring`, `investigation`, `perf-issue`, `prototype`, `autonomous-run`, `shipping`, `session-pickup`, `pause-safely`, `authoring-a-skill`). If none fits, use `figure-it-out`.
 4. Track large tasks in `odd/tasks/<feature-name>.md`.
-5. Implement inline, or through `pig-worker` with `Spec:`, `## Allowed edit surfaces`, `## Invariants`, and `## Verification`.
+5. Implement inline, or through `pig-worker` with `Spec:`, `## Allowed edit paths`, `## Invariants`, and `## Verification`.
 6. Run the Close Sequence once: `deslop`, verification, `pig-verifier` only for High-Risk.
 
 ## Output Contract
@@ -49,6 +49,6 @@ Return: goal, playbook and route, principles that changed a decision, observed `
 
 ## References
 
-- [references/odd-protocol.md](references/odd-protocol.md) — steps, triggers, Close Sequence, correction bounds, commit policy.
-- [references/principles.md](references/principles.md) — 24 engineering principles.
-- [playbooks/](playbooks/) — execution playbooks.
+- [references/odd-protocol.md](references/odd-protocol.md): steps, triggers, Close Sequence, correction bounds, commit policy.
+- [references/principles.md](references/principles.md): 24 engineering principles.
+- [playbooks/](playbooks/): execution playbooks.

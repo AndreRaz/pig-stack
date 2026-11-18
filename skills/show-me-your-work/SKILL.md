@@ -15,7 +15,7 @@ Load when running long, multi-phase, or unattended work that needs a compact, au
 ## Hard Rules
 
 - **Append-only TSV:** Never edit or delete past rows; supersede a wrong call with a new row explaining what happened.
-- **Concrete evidence pointers:** Every row cites a commit SHA, `file:line`, test output path, or artifact path—never prose paragraphs.
+- **Concrete evidence pointers:** Every row cites a commit SHA, `file:line`, test output path, or artifact path, never prose paragraphs.
 - **Unslopped plain words:** Write `decision` and `why` like telling a teammate (`unslop`), escaping spreadsheet formula prefixes via `scripts/log.sh`.
 - **Audit before handoff:** Cross-check this session's rows against actual tool outputs and `git log`; log any unrecorded pivot or missing evidence as a superseding row.
 
@@ -39,5 +39,5 @@ Return: log file path, row count added this run, any superseded rows/gaps found 
 
 ## References
 
-- [references/decision-log-template.tsv](references/decision-log-template.tsv) — canonical TSV header (`ts`, `phase`, `decision`, `why`, `evidence`, `result`).
-- [scripts/log.sh](scripts/log.sh) — append helper sanitizing tabs, newlines, and formula prefixes.
+- [references/decision-log-template.tsv](references/decision-log-template.tsv): canonical TSV header (`ts`, `phase`, `decision`, `why`, `evidence`, `result`).
+- [scripts/log.sh](scripts/log.sh): append helper sanitizing tabs, newlines, and formula prefixes.

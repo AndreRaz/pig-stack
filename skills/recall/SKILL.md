@@ -38,4 +38,4 @@ Return:
 - **Capsule:** <= 5 bullets on current state
 - **Threads:** 1 line each tagged `[merged] | [open PR #N] | [in flight <branch>] | [verified, uncommitted] | [planned]`
 - **Recurring Problems:** <= 5 items with prior failed attempts
-- **Next Move:** single highest-leverage concrete step
+- **Next Move:** single highest-impact concrete step

@@ -20,7 +20,7 @@ most agent setups seem to assume that more agents, more context, and more output
 
 pig-stack makes a few different choices:
 
-- **work inline first.** if the task is clear and small, do it in the current conversation. delegate only when ODD calls for `Mapping`, `Writer`, or `Verification` on High-Risk items 1–6.
+- **work inline first.** if the task is clear and small, do it in the current conversation. delegate only when ODD calls for `Mapping`, `Writer`, or `Verification` on High-Risk items 1-6.
 - **four agents, not a department.** `pig-worker` builds, `pig-explorer` investigates, `pig-verifier` checks the result, and the read-only `comment-sicko` catches comments that shouldn't ship.
 - **no AI slop.** `deslop`, `no-comments`, and `unslop` are built in. remove dead abstractions, speculative fallbacks, filler prose, and code comments instead of adding another cleanup dependency.
 - **verification over vibes.** tests, runtime checks, and actual application behavior decide whether something is done. “looks good” isn't evidence.
@@ -122,7 +122,7 @@ most of the time i want one entry point. sometimes i know exactly what needs doi
 | [`/in-your-own-words`](skills/in-your-own-words/SKILL.md) | Check that the agent understood the goal and constraints before coding. |
 | [`/sharpen`](skills/sharpen/SKILL.md) | Improve a vague task brief without executing it yet. |
 | [`/recall`](skills/recall/SKILL.md) | Resume work from ODD task records, git history, and existing context. |
-| [`/swarm`](skills/swarm/SKILL.md) | Split independent work across agents with separate edit boundaries. |
+| [`/pig-swarm`](skills/pig-swarm/SKILL.md) | Split independent work across agents with separate edit boundaries. Opt-in. |
 | [`/arena`](skills/arena/SKILL.md) | Compare competing implementations in isolated worktrees. Opt-in. |
 | [`/interrogate`](skills/interrogate/SKILL.md) | Challenge a change and keep only runtime-proven findings. Opt-in. |
 | [`/create-verification-skill`](skills/create-verification-skill/SKILL.md) | Give a project a repeatable way to verify the actual application. |
@@ -153,7 +153,7 @@ most of the time i want one entry point. sometimes i know exactly what needs doi
 | `pig-verifier` | Independently checks behavior and evidence. |
 | `comment-sicko` | Read-only review for comments that violate the policy. |
 
-keep small tasks inline. for larger work, delegate only when the ODD trigger and risk justify it. `comment-sicko` reports findings; the parent or designated editor makes the changes. that avoids the edit–revert loops that come from reviewers modifying code themselves.
+keep small tasks inline. for larger work, delegate only when the ODD trigger and risk justify it. `comment-sicko` reports findings on larger diffs; the parent or designated editor makes the changes. that avoids the edit-revert loops that come from reviewers modifying code themselves.
 
 ## what ODD changes
 
@@ -181,7 +181,7 @@ there isn't a hidden service to run. the stack is rules, skills, agents, and a s
 |---|---|---|
 | Core rules | Always-on ODD, anti-slop, and comment policy | [`rules/AGENTS.md`](rules/AGENTS.md) |
 | Main skill | Task entry point, 7 ODD steps, and 11 playbooks | [`skills/pig-mode/SKILL.md`](skills/pig-mode/SKILL.md) |
-| Runtime adapter | Maps tools, paths, and model settings across harnesses | [`docs/harness/multi-runtime.md`](docs/harness/multi-runtime.md) |
+| Runtime adapter | Maps tools, paths, and model settings across runtimes | [`docs/runtimes/multi-runtime.md`](docs/runtimes/multi-runtime.md) |
 | Agents | Worker, explorer, verifier, and comment reviewer | [`agents/`](agents/) |
 | Registry | Exact skill paths for agents | [`.atl/skill-registry.md`](.atl/skill-registry.md) |
 | Scripts | Installation and deterministic validation | [`scripts/`](scripts/) |

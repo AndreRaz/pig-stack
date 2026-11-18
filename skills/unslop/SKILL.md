@@ -25,7 +25,7 @@ Apply every rule and keep every fact, qualifier, and number:
 7. No em dashes, en dashes, or dash-hyphens. No colon as a mid-sentence connector.
 8. No bold label that restates its line, no decorative emojis, no bolding every noun.
 9. No chatbot openers or closers. "In order to" becomes "to".
-10. Ban abstract metaphor nouns (`substrate`, `wedge`, `vector`, `nexus`, `primitive`, `harness`, `surface`, `scaffolding`, `paradigm`, `ratchet`, `north star`, `flywheel`) when a concrete word exists.
+10. Ban abstract metaphor nouns (`substrate`, `wedge`, `vector`, `nexus`, `primitive`, `harness`, `surface`, `scaffolding`, `paradigm`, `ratchet`, `north star`, `flywheel`) when a concrete word exists. Keep established concrete technical terms (`test harness`, `API surface`) only when naming that specific artifact.
 11. One idea per sentence, active voice, numbers over adverbs.
 
 ## Decision Gates

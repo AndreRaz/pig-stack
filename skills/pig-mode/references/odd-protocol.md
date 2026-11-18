@@ -43,14 +43,14 @@ Only a named item triggers `pig-verifier`:
 
 No trigger holds by default. When in doubt, work inline.
 
-- **Mapping:** Understanding needs more than one bounded read batch or more than ~5 sequential lookups before you can decide. Spawn one read-only `pig-explorer` (handoff <= ~2k tokens, one parent spot check).
-- **Writer:** Two or more independent behavior units (~100+ changed lines each) with disjoint `## Allowed edit surfaces`, launched in the same turn, or the ~150k parent-context backstop. Size or file count alone never qualifies.
+- **Mapping:** Understanding needs more than one bounded read batch (3 parallel reads, ~10k tokens) or more than ~5 sequential lookups before you can decide. Spawn one read-only `pig-explorer` (handoff <= ~2k tokens, one parent spot check).
+- **Writer:** Two or more independent behavior units (~100+ changed lines each) with disjoint `## Allowed edit paths`, launched in the same turn, or the ~150k parent-context backstop. Size or file count alone never qualifies.
 - **Verification:** The `Risk:` line names an item from section 2. Spawn one read-only `pig-verifier`.
-- **Parallel writers:** Same local tree only with disjoint surfaces, the parent owns git, workers run no repo-wide formatters or installs. Use isolated worktrees only when units share a file.
+- **Parallel writers:** Same local tree only with disjoint edit paths, the parent owns git, workers run no repo-wide formatters or installs. Use isolated worktrees only when units share a file.
 
 ## 4. Close Sequence (run once, in order)
 
-1. **Normalize:** Run `deslop` once over the diff. It runs `no-comments` internally. Never call `no-comments` separately in the same pass.
+1. **Normalize:** Run `deslop` once over the diff. It runs `no-comments` internally (inline for small diffs, `comment-sicko` only for large diffs). Never call `no-comments` separately in the same pass.
 2. **Verify:** Run focused checks, then the applicable full suite, then a differential check on touched shared helpers. This is the only full verification run.
 3. **Independent check:** Spawn `pig-verifier` only when section 2 applies.
 4. **Report:** Observed `<command>: <result>`, `Risk: item N (reason)` or `Risk: none`, and every skipped or unverified check.
@@ -59,8 +59,8 @@ No trigger holds by default. When in doubt, work inline.
 
 - A failed check or verifier blocker gets one correction batch fixing every reported blocker, then one recheck limited to those blockers.
 - The correction diff gets `deslop` scoped to the changed lines only, never a new full normalization pass.
-- A second correction runs only when the recheck shows the same blocker still failing. A new finding never earns another round.
-- Still failing after that: apply `Attack the Premise` once. If no new hypothesis exists, stop and report the unit as `partial` with the exact blocker.
+- A second (and final) correction runs only when the recheck shows the same blocker still failing, or a regression introduced by the correction diff itself. Pre-existing or out-of-scope new findings never earn another round.
+- Still failing after the second correction (or if a correction-caused regression remains unresolved): apply `Attack the Premise` once. If no new hypothesis exists, stop and report the unit as `partial` with the exact blocker.
 
 ## 6. Commit Policy
 

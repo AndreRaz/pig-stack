@@ -15,15 +15,15 @@ Load when the user asks how a subsystem works, where new logic belongs, or which
 ## Hard Rules
 
 - **Strictly read-only:** Never edit files or spawn writers.
-- **Proportionate reading:** Use 1 inline parallel batch (<= 3 calls, ~10k tokens) for narrow subsystems; spawn 1 read-only `pig-explorer` only when understanding needs more than one batch or ~5 sequential lookups.
+- **Proportionate reading:** Follow the `odd-protocol.md` section 3 Mapping trigger; explore inline by default and spawn 1 read-only `pig-explorer` only when that trigger holds.
 - **Cite observed code:** Every claim about runtime behavior, types, or ownership must cite `path:line`. Mark inferences explicitly.
 
 ## Decision Gates
 
 | Scope | Route |
 |---|---|
-| <= 3 bounded reads suffice | Explore inline directly. |
-| Trace needs more than one batch | Spawn 1 `pig-explorer` with `Skills to load before work`. |
+| Within the inline read budget (`odd-protocol.md` section 3) | Explore inline directly. |
+| Mapping trigger holds (`odd-protocol.md` section 3) | Spawn 1 `pig-explorer` with `Skills to load before work`. |
 | User asked "why was it built this way?" | Route to or pair with `why`. |
 
 ## Execution Steps

@@ -25,7 +25,7 @@ Load when a change adds or alters a type, signature, or state owner that another
 | Scope | Action |
 |---|---|
 | Change stays inside one module and its types | Skip. Return "no cross-module shape change". |
-| Cross-module type, signature, or state owner changes | Two shapes, pick one, list edit surfaces and invariants. |
+| Cross-module type, signature, or state owner changes | Two shapes, pick one, list edit paths and invariants. |
 | Choice depends on runtime behavior reading cannot show | Return the prototype question instead of guessing. |
 
 ## Execution Steps
@@ -33,8 +33,8 @@ Load when a change adds or alters a type, signature, or state owner that another
 1. Map callers and invariants within one bounded read batch.
 2. Sketch Option A and Option B with types, boundaries, state owner, and tradeoffs.
 3. Pick the shape that removes invalid states and branches.
-4. List the exact `Allowed edit surfaces`, the invariants to reuse, and the checks that prove the shape.
+4. List the exact `Allowed edit paths`, the invariants to reuse, and the checks that prove the shape.
 
 ## Output Contract
 
-Return: a two-row comparison table, the chosen types and signatures, the state owner, invariants, planned edit surfaces, or the open prototype question.
+Return: a two-row comparison table, the chosen types and signatures, the state owner, invariants, planned edit paths, or the open prototype question.

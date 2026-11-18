@@ -12,7 +12,7 @@ Read the specific entry that guides a decision and cite only principles that act
 - **Minimize Reader Load:** Count layers between question and answer and hidden mutable state; collapse 1-caller wrappers and shrink scope.
 - **Outcome-Oriented Execution:** In planned migrations/rewrites, converge on the target architecture instead of maintaining throwaway compatibility shims.
 - **Experience First:** Choose user clarity and polish over implementation convenience; ship fewer solid features over more rough ones.
-- **Exhaust the Design Space:** For high-cost novel designs with no precedent, prototype 2-3 competing options side by side (`arena` or `prototype`) before committing.
+- **Exhaust the Design Space:** For high-cost novel designs with no precedent, prototype 2-3 competing options side by side (opt-in `/arena` or `prototype`) before committing.
 - **Build the Lever:** For repeated edits, migrations, or checks, write a deterministic script/codemod/check reviewers can rerun instead of manual edits.
 
 ## Architecture
@@ -22,7 +22,7 @@ Read the specific entry that guides a decision and cite only principles that act
 - **Type System Discipline:** Make illegal states unrepresentable, brand semantic primitives, parse external data with schemas, and exhaust variants.
 - **Make Operations Idempotent:** Design commands, installers, and lifecycle steps so retries converge to the same clean end state.
 - **Migrate Callers Then Delete Legacy APIs:** Migrate all callers and remove the old API in the same wave instead of preserving dual paths.
-- **Separate Before Serializing Shared State:** Eliminate shared mutable targets first (disjoint edit surfaces); serialize structurally only when one writer is a true invariant.
+- **Separate Before Serializing Shared State:** Eliminate shared mutable targets first (disjoint edit paths); serialize structurally only when one writer is a true invariant.
 
 ## Verification
 
